@@ -69,31 +69,50 @@
 // console.log(`https://someurl.com/${category}/5`);// новая версия написания кода ВНИМАНИЕ НА КОВЫЧКИ
 
 
-//ОПЕРАТОРЫ В JS
-console.log(4 + "5"); //выведет 45
-console.log(4 + +"5"); //выведет 9
+// //ОПЕРАТОРЫ В JS
+// console.log(4 + "5"); //выведет 45
+// console.log(4 + +"5"); //выведет 9
 
-//инкремент и декремент
-let incr = 10,
-    decr = 10;
-// incr++;
-// decr--;
+// //инкремент и декремент
+// let incr = 10,
+//     decr = 10;
+// // incr++;
+// // decr--;
 
-// постфиксная и префиксная формы
-console.log(incr++);
-console.log(decr--); //выведет: 10 и 10
+// // постфиксная и префиксная формы
+// console.log(incr++);
+// console.log(decr--); //выведет: 10 и 10
 
-console.log(++incr);
-console.log(--decr); //выведет: 11 и 9
+// console.log(++incr);
+// console.log(--decr); //выведет: 11 и 9
 
-//сравнение
-console.log(4*2 == 8); //выведет true
-console.log(4*2 == '8'); //тоже выведет true
-console.log(4*2 === '8'); //выведет false, так как это строгое сравнение и оно сравнивает типы данных тоже
+// //сравнение
+// console.log(4*2 == 8); //выведет true
+// console.log(4*2 == '8'); //тоже выведет true
+// console.log(4*2 === '8'); //выведет false, так как это строгое сравнение и оно сравнивает типы данных тоже
 
-//логические операции
-//&& - логическое И
-//|| - логическое ИЛИ
-//! - логическое отрицание 
-//!= - не равно
-//!== - строгое не равно
+// //логические операции
+// //&& - логическое И
+// //|| - логическое ИЛИ
+// //! - логическое отрицание 
+// //!= - не равно
+// //!== - строгое не равно
+const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?','5');
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {
+
+    },
+    actors: {
+
+    },
+    genres: [],
+    privat: false
+};
+const film1 = prompt('Один из последних просмотренных фильмов?', 'Гарри Поттер');
+const grade1 = +prompt('На сколько оцените его?', '9');
+const film2 = prompt('Один из последних просмотренных фильмов?', 'Гарри Поттер');
+const grade2 = +prompt('На сколько оцените его?', '9');
+personalMovieDB.movies[film1] = grade1;
+personalMovieDB.movies[film2] = grade2;
+console.log(personalMovieDB)
