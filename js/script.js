@@ -109,14 +109,56 @@ const personalMovieDB = {
     genres: [],
     privat: false
 };
-const film1 = prompt('Один из последних просмотренных фильмов?', 'Гарри Поттер');
-const grade1 = +prompt('На сколько оцените его?', '9');
-const film2 = prompt('Один из последних просмотренных фильмов?', 'Гарри Поттер');
-const grade2 = +prompt('На сколько оцените его?', '9');
-personalMovieDB.movies[film1] = grade1;
-personalMovieDB.movies[film2] = grade2;
-console.log(personalMovieDB)
+// const film1 = prompt('Один из последних просмотренных фильмов?', 'Гарри Поттер');
+// const grade1 = +prompt('На сколько оцените его?', '9');
+// const film2 = prompt('Один из последних просмотренных фильмов?', 'Гарри Поттер');
+// const grade2 = +prompt('На сколько оцените его?', '9');
+// personalMovieDB.movies[film1] = grade1;
+// personalMovieDB.movies[film2] = grade2;
+// console.log(personalMovieDB)
+questions: for(let i = 1; i < 3; i++){
+    const film = prompt('Один из последних просмотренных фильмов?', 'Гарри Поттер');
+    const grade = +prompt('На сколько оцените его?', '9');
+    if(film === null || grade === null ||film === '' || grade === '' || film.length > 50){
+        i--;
+        continue questions; 
+    } else{
+        personalMovieDB.movies[film] = grade;
+        console.log('done');
+    }
+}
+console.log(personalMovieDB);
+if(personalMovieDB.count < 10){
+    alert('Просмотренно довольно мало фильмов');
+}  
+if((personalMovieDB.count > 9) && (personalMovieDB.count < 30)){
+    alert('Вы - классический зритель');
+} 
+if(personalMovieDB.count > 29){
+    alert('Вы киноман');
+}
 
+// let a = 0;
+// question: while(a < 2){
+//     const film = prompt('Один из последних просмотренных фильмов?', 'Гарри Поттер');
+//     const grade = +prompt('На сколько оцените его?', '9');
+//     personalMovieDB.movies[film] = grade;
+//     if(film === false || film.length > 50){
+//         break question; 
+//     }
+//     a++;
+// }
+
+// questio: do{
+//     const film = prompt('Один из последних просмотренных фильмов?', 'Гарри Поттер');
+//     const grade = +prompt('На сколько оцените его?', '9');
+//     personalMovieDB.movies[film] = grade;
+//     if(film === false || film.length > 50){
+//         break questio; 
+//     }
+//     a++;
+// }
+// while(a < 1);
 
 // //УСЛОВИЯ
 // const num = 50;
