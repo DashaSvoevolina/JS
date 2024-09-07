@@ -221,3 +221,44 @@ if(personalMovieDB.count > 29){
 //     }
     
 // }
+
+
+
+//ФУНКЦИИ
+function showFirstMessege(){
+    console.log('Hell world!');
+}// создали функцию
+showFirstMessege();//вызвали функцию
+
+function showFirstMessege(text){
+    console.log(text);
+}
+showFirstMessege("Hello world!");// функция с аргументом
+
+//когда функция видит retun, она прекращает работу
+function calc(a, b){
+    return(a + b);
+    console.log("hbhjj j");//функция не выполнит этот код, unreachable code - недостижимый код
+}
+console.log(calc(4,5));
+
+//function declaration
+// обычные функции, создаются до начала выполнения скрипта
+function calc(a, b){
+    return(a + b);
+}
+
+// function expression
+// создаются только тогда, когда доходит поток кода, можно вызвать только после объявления
+let foo = function(a, b){
+    return(a + b);
+};// не забывать после этой функции ставить;
+
+//стрелочные функции
+// не имеют своего контекста
+const calc = (a, b) => a + b;
+const calc = a => a + b;
+const calc = (a, b) => {
+    a + b;
+    console.log(a);
+};
