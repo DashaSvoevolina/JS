@@ -116,3 +116,66 @@ const grade2 = +prompt('На сколько оцените его?', '9');
 personalMovieDB.movies[film1] = grade1;
 personalMovieDB.movies[film2] = grade2;
 console.log(personalMovieDB)
+
+
+// //УСЛОВИЯ
+// const num = 50;
+// if(num < 49){
+//     console.log('Мало')
+// } else if(num > 100){
+//     console.log('Много') 
+// } else{
+//     console.log('Верно')
+// }
+
+// //тернарный оператор
+// (num === 50)?console.log('Ok'):console.log('Error');//первое - условие; второе - если условие верно; третье - если условие неверно
+
+// // switch case
+// switch(num){
+//     case 49:
+//         console.log('Неверно');
+//         break;   
+//     case 100:
+//         console.log('Неверно');
+//         break;
+//     case 50:
+//         console.log('Верно');
+//         break;      
+//     default:
+//         console.log('Не в этот раз');
+//         break;   
+// }
+
+
+// //ЦИКЛЫ
+// let num = 50;
+// //1)
+// while(num < 55){
+//     console.log(num);
+//     num ++;
+// }
+// //2)
+// do{
+//     console.log(num);
+//     num++;
+// }
+// while(num < 55);
+// //3)
+// for(let i = 1; i < 8; i++){
+//     console.log(i);
+// }
+
+// //метки
+// first: for(let i = 1; i < 8; i++){// first - является меткой
+//     console.log(`First level: ${i}`);
+//     for(let j = 1; j < 8; j++){
+//         console.log(`Second level: ${j}`);
+//         for(let k = 1; k < 8; k++){
+//             if(k === 2) continue first;// переход на метку
+//             console.log(`Third level: ${k}`);
+//         }
+        
+//     }
+    
+// }
