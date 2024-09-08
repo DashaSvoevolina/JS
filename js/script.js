@@ -224,41 +224,73 @@ if(personalMovieDB.count > 29){
 
 
 
-//ФУНКЦИИ
-function showFirstMessege(){
-    console.log('Hell world!');
-}// создали функцию
-showFirstMessege();//вызвали функцию
+// //ФУНКЦИИ
+// function showFirstMessege(){
+//     console.log('Hell world!');
+// }// создали функцию
+// showFirstMessege();//вызвали функцию
 
-function showFirstMessege(text){
-    console.log(text);
-}
-showFirstMessege("Hello world!");// функция с аргументом
+// function showFirstMessege(text){
+//     console.log(text);
+// }
+// showFirstMessege("Hello world!");// функция с аргументом
 
-//когда функция видит retun, она прекращает работу
-function calc(a, b){
-    return(a + b);
-    console.log("hbhjj j");//функция не выполнит этот код, unreachable code - недостижимый код
-}
-console.log(calc(4,5));
+// //когда функция видит retun, она прекращает работу
+// function calc(a, b){
+//     return(a + b);
+//     console.log("hbhjj j");//функция не выполнит этот код, unreachable code - недостижимый код
+// }
+// console.log(calc(4,5));
 
-//function declaration
-// обычные функции, создаются до начала выполнения скрипта
-function calc(a, b){
-    return(a + b);
-}
+// //function declaration
+// // обычные функции, создаются до начала выполнения скрипта
+// function calc(a, b){
+//     return(a + b);
+// }
 
-// function expression
-// создаются только тогда, когда доходит поток кода, можно вызвать только после объявления
-let foo = function(a, b){
-    return(a + b);
-};// не забывать после этой функции ставить;
+// // function expression
+// // создаются только тогда, когда доходит поток кода, можно вызвать только после объявления
+// let foo = function(a, b){
+//     return(a + b);
+// };// не забывать после этой функции ставить;
 
-//стрелочные функции
-// не имеют своего контекста
-const calc = (a, b) => a + b;
-const calc = a => a + b;
-const calc = (a, b) => {
-    a + b;
-    console.log(a);
-};
+// //стрелочные функции
+// // не имеют своего контекста
+// const calc = (a, b) => a + b;
+// const calc = a => a + b;
+// const calc = (a, b) => {
+//     a + b;
+//     console.log(a);
+// };
+
+
+// МЕТОДЫ И СВОЙСТВА СТРОК И ЧИСЕЛ
+
+//свойство length
+const str = "test";
+console.log(str.length)//выведет 4
+
+//метод dir
+console.dir(Number)//выведет всю информацию о типе данных "Number"
+
+//методы изменения регистра(не меняют строку напрямую)
+console.log(str.toUpperCase());// выведет строку в верхнем регистре
+console.log(str.toLowerCase());// выведет строку в нижнем регистре
+
+//indexOf
+const fruit = "Some fruit";
+console.log(fruit.indexOf('fruit'));//выведет 5(с какого индекса начинается искомая строка; если выведет -1, то искомой строкив переменной нет)
+
+//изменения строк(режим строки)
+const logg = "Hello world";
+console.log(logg.slice(6,11));//выведет world. Первый аргумент - индекс, с которого начинается строка; второй аргумент- индекс до которого она продолжается(не включительно).Если написан один аргумент, то с него начинается строка и обрежется до конца
+console.log(logg.slice(-5,-1));//выведет worl. Отрицательные аргументы- индексы справа налево
+console.log(logg.substring(6,11));// то же самое. Нельзя использовать отрицательные аргкменты и можно делать первый аргумент больше второго(не рекомендуется)
+console.log(logg.substr(6,5));//выведет world. Первый аргумент - индекс, с которого начнется строка; второй аргумент - длина строки
+
+//числа
+const num = 12.2;
+console.log(Math.round(num));//выведет 12. Округляет
+const test = "12.2px";
+console.log(parseInt(test));//выведет 12 в числовом типе. Но по идее он переводит числа в разные системы счисления
+console.log(parseFloat(test));//выведет 12.2 в числовом типе. Но по идее он переводит числа в десятичную систему счисления
