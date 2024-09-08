@@ -97,7 +97,18 @@
 // //! - логическое отрицание 
 // //!= - не равно
 // //!== - строгое не равно
-const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?','5');
+let numberOfFilms;
+
+function start() {
+    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?','5');
+
+    while(numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)){
+        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?','5');
+    }
+}
+
+start();
+
 const personalMovieDB = {
     count: numberOfFilms,
     movies: {
@@ -116,27 +127,53 @@ const personalMovieDB = {
 // personalMovieDB.movies[film1] = grade1;
 // personalMovieDB.movies[film2] = grade2;
 // console.log(personalMovieDB)
-questions: for(let i = 1; i < 3; i++){
-    const film = prompt('Один из последних просмотренных фильмов?', 'Гарри Поттер');
-    const grade = +prompt('На сколько оцените его?', '9');
-    if(film === null || grade === null ||film === '' || grade === '' || film.length > 50){
-        i--;
-        continue questions; 
-    } else{
-        personalMovieDB.movies[film] = grade;
-        console.log('done');
+
+function rememberMyFilms(){
+    questions: for(let i = 1; i < 3; i++){
+        const film = prompt('Один из последних просмотренных фильмов?', 'Гарри Поттер').trim();
+        const grade = +prompt('На сколько оцените его?', '9').trim();
+        if(film === null || grade === null ||film === '' || grade === '' || film.length > 50){
+            i--;
+            continue questions; 
+        } else{
+            personalMovieDB.movies[film] = grade;
+            console.log('done');
+        }
     }
 }
-console.log(personalMovieDB);
-if(personalMovieDB.count < 10){
-    alert('Просмотренно довольно мало фильмов');
-}  
-if((personalMovieDB.count > 9) && (personalMovieDB.count < 30)){
-    alert('Вы - классический зритель');
-} 
-if(personalMovieDB.count > 29){
-    alert('Вы киноман');
+
+rememberMyFilms();
+
+function detectPersonalLevel(){
+    console.log(personalMovieDB);
+    if(personalMovieDB.count < 10){
+        alert('Просмотренно довольно мало фильмов');
+    }  
+    if((personalMovieDB.count > 9) && (personalMovieDB.count < 30)){
+        alert('Вы - классический зритель');
+    } 
+    if(personalMovieDB.count > 29){
+        alert('Вы киноман');
+    }
 }
+
+detectPersonalLevel();
+
+function showMyDB(){
+    if(personalMovieDB.privat == false){
+        console.log(personalMovieDB);
+    }
+}
+
+showMyDB();
+
+function writeYourGeners(){
+    for(let i = 1; i < 4; i++ ){
+        personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
+    }
+}
+
+writeYourGeners();
 
 // let a = 0;
 // question: while(a < 2){
@@ -264,33 +301,33 @@ if(personalMovieDB.count > 29){
 // };
 
 
-// МЕТОДЫ И СВОЙСТВА СТРОК И ЧИСЕЛ
+// // МЕТОДЫ И СВОЙСТВА СТРОК И ЧИСЕЛ
 
-//свойство length
-const str = "test";
-console.log(str.length)//выведет 4
+// //свойство length
+// const str = "test";
+// console.log(str.length)//выведет 4
 
-//метод dir
-console.dir(Number)//выведет всю информацию о типе данных "Number"
+// //метод dir
+// console.dir(Number)//выведет всю информацию о типе данных "Number"
 
-//методы изменения регистра(не меняют строку напрямую)
-console.log(str.toUpperCase());// выведет строку в верхнем регистре
-console.log(str.toLowerCase());// выведет строку в нижнем регистре
+// //методы изменения регистра(не меняют строку напрямую)
+// console.log(str.toUpperCase());// выведет строку в верхнем регистре
+// console.log(str.toLowerCase());// выведет строку в нижнем регистре
 
-//indexOf
-const fruit = "Some fruit";
-console.log(fruit.indexOf('fruit'));//выведет 5(с какого индекса начинается искомая строка; если выведет -1, то искомой строкив переменной нет)
+// //indexOf
+// const fruit = "Some fruit";
+// console.log(fruit.indexOf('fruit'));//выведет 5(с какого индекса начинается искомая строка; если выведет -1, то искомой строкив переменной нет)
 
-//изменения строк(режим строки)
-const logg = "Hello world";
-console.log(logg.slice(6,11));//выведет world. Первый аргумент - индекс, с которого начинается строка; второй аргумент- индекс до которого она продолжается(не включительно).Если написан один аргумент, то с него начинается строка и обрежется до конца
-console.log(logg.slice(-5,-1));//выведет worl. Отрицательные аргументы- индексы справа налево
-console.log(logg.substring(6,11));// то же самое. Нельзя использовать отрицательные аргкменты и можно делать первый аргумент больше второго(не рекомендуется)
-console.log(logg.substr(6,5));//выведет world. Первый аргумент - индекс, с которого начнется строка; второй аргумент - длина строки
+// //изменения строк(режим строки)
+// const logg = "Hello world";
+// console.log(logg.slice(6,11));//выведет world. Первый аргумент - индекс, с которого начинается строка; второй аргумент- индекс до которого она продолжается(не включительно).Если написан один аргумент, то с него начинается строка и обрежется до конца
+// console.log(logg.slice(-5,-1));//выведет worl. Отрицательные аргументы- индексы справа налево
+// console.log(logg.substring(6,11));// то же самое. Нельзя использовать отрицательные аргкменты и можно делать первый аргумент больше второго(не рекомендуется)
+// console.log(logg.substr(6,5));//выведет world. Первый аргумент - индекс, с которого начнется строка; второй аргумент - длина строки
 
-//числа
-const num = 12.2;
-console.log(Math.round(num));//выведет 12. Округляет
-const test = "12.2px";
-console.log(parseInt(test));//выведет 12 в числовом типе. Но по идее он переводит числа в разные системы счисления
-console.log(parseFloat(test));//выведет 12.2 в числовом типе. Но по идее он переводит числа в десятичную систему счисления
+// //числа
+// const num = 12.2;
+// console.log(Math.round(num));//выведет 12. Округляет
+// const test = "12.2px";
+// console.log(parseInt(test));//выведет 12 в числовом типе. Но по идее он переводит числа в разные системы счисления
+// console.log(parseFloat(test));//выведет 12.2 в числовом типе. Но по идее он переводит числа в десятичную систему счисления
