@@ -331,3 +331,64 @@ writeYourGeners();
 // const test = "12.2px";
 // console.log(parseInt(test));//выведет 12 в числовом типе. Но по идее он переводит числа в разные системы счисления
 // console.log(parseFloat(test));//выведет 12.2 в числовом типе. Но по идее он переводит числа в десятичную систему счисления
+
+
+// // CALLBACK - ФУНКЦИИ
+// function first(){
+//     //Do something
+//     setTimeout(function(){
+//         console.log(1);
+//     }, 500); //замедляем функцию на пол секунды
+// }
+
+// function second(){
+//     console.log(2);
+// }
+
+// first();
+// second();//получается, что вторая функция выведет результат быстрее первой
+
+// function learnJS(lang, callback){
+//     console.log(`Я учу: ${lang}`);
+//     callback();
+// }
+
+// learnJS('JavaScript', function(){
+//     console.log('Я прошел этот урок');
+// }) //сначала выведет:" Я учу JavaScript",а потом: "Я прошел этот урок"
+
+
+// //ОБЪЕКТЫ, ДЕКСТРУКТУРИЗАЦИЯ ОБЪЕКТОВ
+// const options ={
+//     name: 'test',
+//     weight: 1024,
+//     height: 1024,
+//     colors: {
+//         border: 'black',
+//         bg: 'red'
+//     },
+//     makeTest: function(){
+//         console.log('test');
+//     }//сделали сами метод
+// };
+
+// options.makeTest();//запустили метод
+
+// delete options.name;//удалит свойство name из объекта
+
+// for(let key in options){
+//     if(typeof(options[key] === 'object')){
+//         for(let i in options[key]){
+//             console.log(`Свойство ${key} имеет значение ${options[key][i]}`);//если вдруг одно из свойств объекта еще один объект, то JS не сможет просто так превратить его в строку, для этого мы запускаем в таком случае еще один for in
+//         }
+//     } else{
+//         console.log(`Свойство ${key} имеет значение ${options[key]}`);
+//     }
+// }//перебирает все свойства объекта и будет выводить их по очереди. Например первая строка будет:"Свойство name имеет значение test"
+
+// console.log(Object.keys(options));//создаст массив только из ключей нашего объекта:['name', 'weight', 'height', 'colors']
+// console.log(Object.keys(options).length);//выведет количество свойств в объекте       
+
+// //Деструктуризация объекта JS — это синтаксическое удобство, которое облегчает извлечение данных из массивов или объектов, позволяя прямо «распаковывать» их значения в переменные
+// const{border, bg} = options.colors;
+// console.log(border);// выведет black
