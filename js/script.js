@@ -392,3 +392,101 @@ writeYourGeners();
 // //Деструктуризация объекта JS — это синтаксическое удобство, которое облегчает извлечение данных из массивов или объектов, позволяя прямо «распаковывать» их значения в переменные
 // const{border, bg} = options.colors;
 // console.log(border);// выведет black
+
+
+
+// //МАССИВЫ И ПСЕВДОМАССИВЫ
+// const arr = [1, 2, 3, 6, 8];
+
+// arr.pop();//метод, который удаляет последний элемент массива
+// arr.push(10);//метод, который добавляет элемент в конец массива
+
+// for(let i = 0; i < arr.length; i++){
+//     console.log(arr[i]);
+// } //перебираем все элементы массива
+
+// for(let value of arr){
+//     console.log(arr[value]);
+// }//перебираем элементы массива, но уже с прмрщью for of
+
+// console.log(arr.length);// выведет 5; т.е. последний индекс массива + 1
+
+// arr.forEach(function(item, i, arr){//аргументы функции: первый - элемент массива; второй - его индекс; третий - ссылаемся на сам массив
+//     console.log(`${i}: ${item} внутри массива ${arr}`);
+// })//forEach перебирает все элементы массива и можно для каждого 'элемента массива использовать функцию 
+// //for of имеет преимущество в том, что там можно использовать break и continue
+
+// const str = prompt("", "");
+// const products = str.split(", ");//создаст массив из данных, которые пользователь ввел в строку(!при этом данные должны быть разделены запятой и пробелом)
+// products.sort();//всегда сортирует массив, как строки(дефолтно - в алфавитном порядке)
+// console.log(products.join('; '));//выведет массив ввиде строки, где данные разделяются - "; "
+
+// function compareNum(a, b){
+//     return a - b;
+// }
+// arr.sort(compareNum);//отсортирует числа в массиве по возрастанию
+
+// // У псевдомассивов не никаких методов
+
+
+//ПЕРЕДАЧА ПО ССЫЛКЕ ИЛИ ПО ЗНАЧЕНИЮ, SPREAD ОПЕРАТОР
+// const obj = {
+//     a : 5,
+//     b: 1,
+// };
+// const copy = obj;
+// copy.a = 10;
+// console.log(copy);
+// console.log(obj);//выведет два одинаковых объекта: {a:10, b:1} {a:10, b:1}, так как мы не копируем значения, а передаем его ссылкой
+
+function copy(mainObj){//функция для КОПИРОВАНИЯ одного объекта в другой
+    let objCopy = {};
+
+    let key;
+    for(key in mainObj){
+        objCopy[key] = mainObj;
+    }
+    return objCopy;
+}
+const numbers = {
+    a:2,
+    b:5,
+    c: {
+        x:7,
+        y:4
+    }
+};
+
+const newNumbers = copy(numbers);// совершили клонирование объекта
+newNumbers.a = 10;
+console.log(newNumbers); //выведет {a: 10, b: 5, c: {x: 7, y: 4}}
+console.log(numbers);//выведет {a: 2, b: 5, c: {x: 7, y: 4}}
+
+newNumbers.c.x = 10;// эта функция НЕ глубокая копия объекта( то есть любой вложенное свойство будет иметь ссылочный вид данных)
+console.log(newNumbers); //выведет {a: 10, b: 5, c: {x: 10, y: 4}}
+console.log(numbers);//выведет {a: 2, b: 5, c: {x: 10, y: 4}}
+
+const add = {
+    d: 17,
+    e: 20
+
+};
+console.log(Object.assign(numbers, add));//Функция для соединения лвух объектов в один(в данном случае в объект numbers) выведет: {a: 2, b: 5, c: {x: 7, y: 4}, d: 17, e: 20}
+// это тоже поверхностная(не глубокая) функция
+
+const oldArray = ['a', 'b', 'c'];
+const newArray = oldArray.slice();// метод, который позволяет поверхностно скопировать массивы
+//оператор разворота, Spread оператор
+const video = ['youtube', 'vimeo','rutube'],
+      blogs =['wordpress', 'livejorunal', 'blogger'],
+      internet = [...video, ...blogs, 'vk', 'facebook'];
+console.log(internet); //выведет: ['youtube', 'vimeo','rutube', 'wordpress', 'livejorunal', 'blogger', 'vk', 'facebook']
+
+const array = ['a', 'b'];
+const newAarray = [...array];//создаем поверхностную копию объекта
+
+const q = {
+    one: 1,
+    two: 2
+};
+const newObj = {...q};//создаем поверхностную копию объекта
